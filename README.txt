@@ -11,5 +11,5 @@ Recranet Booking Elements
 
 == Description ==
 
-Integratie ven Recranet Booking Elements, meer informatie:
+Integratie van Recranet Booking Elements, meer informatie:
 https://support.recranet.com/faq/website-integratie-elements-sdk/integratie-in-website
