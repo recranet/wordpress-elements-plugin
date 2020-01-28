@@ -24,8 +24,9 @@ $locale = substr($locale, 0, 2);
 
 <script type="text/javascript">
     window.recranetConfig = {
-        organization: <?php echo $options['organization']; ?>,
-        locale: <?php echo $locale; ?>,
+        organization: '<?php echo $options['organization']; ?>',
+        locale: '<?php echo $locale; ?>',
         currency: 'EUR'
     };
 </script>
+<script type="text/javascript" src="//static.recranet.com/elements/sdk-<?php echo $locale; ?>/sdk.js?<?php echo mt_rand(); ?>"></script>
