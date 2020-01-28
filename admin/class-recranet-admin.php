@@ -114,13 +114,33 @@ class Recranet_Admin {
 		echo '<input type="text" name="' . $this->plugin_name . '_organization" id="' . $this->plugin_name . '_organization" value="' . get_option( $this->plugin_name . '_organization' ) . '">';
     }
 	
+	/**
+	 * Render the accommodation category input for this plugin
+	 *
+	 * @since  1.1.0
+	 */
+	public function recranet_accommodation_category_cb() {
+	    echo '<input type="text" name="' . $this->plugin_name . '_accommodation_category" id="' . $this->plugin_name . '_accommodation_category" value="' . get_option( $this->plugin_name . '_accommodation_category' ) . '">';
+	}
+	
+	/**
+	 * Render the locality category input for this plugin
+	 *
+	 * @since  1.1.0
+	 */
+	public function recranet_locality_category_cb() {
+	    echo '<input type="text" name="' . $this->plugin_name . '_locality_category" id="' . $this->plugin_name . '_locality_category" value="' . get_option( $this->plugin_name . '_locality_category' ) . '">';
+	}
+	
     /**
      * Register settings
      *
      * @since    1.0.0
      */
     public function register_settings() {
-        register_setting( $this->plugin_name, $this->plugin_name . '_organization', 'intval' );
+		register_setting( $this->plugin_name, $this->plugin_name . '_organization', 'intval' );
+		register_setting( $this->plugin_name, $this->plugin_name . '_accommodation_category', 'intval' );
+		register_setting( $this->plugin_name, $this->plugin_name . '_locality_category', 'intval' );
 
         add_settings_section(
     		$this->plugin_name . '_general',
@@ -128,14 +148,32 @@ class Recranet_Admin {
     		array( $this, $this->plugin_name . '_general_cb' ),
     		$this->plugin_name
     	);
+		
+		add_settings_field(
+		    $this->plugin_name . '_organization',
+		    'Organization id',
+		    array( $this, $this->plugin_name . '_organization_cb' ),
+		    $this->plugin_name,
+		    $this->plugin_name . '_general',
+		    array( 'label_for' => $this->plugin_name . '_organization' )
+		);
 
         add_settings_field(
-            $this->plugin_name . '_organization',
-            'Organization id',
-            array( $this, $this->plugin_name . '_organization_cb' ),
+            $this->plugin_name . '_accommodation_category',
+            'Accommodation category id (optional)',
+            array( $this, $this->plugin_name . '_accommodation_category_cb' ),
             $this->plugin_name,
             $this->plugin_name . '_general',
-            array( 'label_for' => $this->plugin_name . '_organization' )
+            array( 'label_for' => $this->plugin_name . '_accommodation_category' )
+        );
+
+        add_settings_field(
+            $this->plugin_name . '_locality_category',
+            'Locality category id (optional)',
+            array( $this, $this->plugin_name . '_locality_category_cb' ),
+            $this->plugin_name,
+            $this->plugin_name . '_general',
+            array( 'label_for' => $this->plugin_name . '_locality_category' )
         );
     }
 }
