@@ -74,8 +74,7 @@ class Recranet_Public {
         global $post;
 
         // Add base tag to head for html5 mode
-        if ( is_a( $post, 'WP_Post' ) &&
-            ( has_shortcode( $post->post_content, 'recranet_accommodations' ) || has_shortcode( $post->post_content, 'recranet_packages' ) ) ) {
+        if ( is_a( $post, 'WP_Post' ) ) {
             echo '<base href="' . get_permalink() . '" />';
         }
     }
