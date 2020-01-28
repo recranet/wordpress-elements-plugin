@@ -25,8 +25,6 @@ if (isset($atts['baseUrl'])) {
 }
 ?>
 
-<recranet-packages class="recranet-element" baseUrl="<?php echo $baseUrl; ?>"></recranet-packages>
-
 <script type="text/javascript">
     window.recranetConfig = {
         organization: '<?php echo $options['organization']; ?>',
@@ -34,4 +32,6 @@ if (isset($atts['baseUrl'])) {
         currency: 'EUR'
     };
 </script>
-<script type="text/javascript" src="//static.recranet.com/elements/sdk-<?php echo $locale; ?>/sdk.js?<?php echo mt_rand(); ?>"></script>
+<script type="text/javascript" src="//static.recranet.com/elements/sdk-<?php echo $locale; ?>/sdk.js?<?php echo mt_rand(); ?>" async></script>
+
+<recranet-packages class="recranet-element" baseUrl="<?php echo $baseUrl; ?>"></recranet-packages>

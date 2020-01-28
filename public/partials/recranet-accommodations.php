@@ -20,8 +20,6 @@ $locale = get_locale();
 $locale = substr($locale, 0, 2);
 ?>
 
-<recranet-accommodations class="recranet-element"></recranet-accommodations>
-
 <script type="text/javascript">
     window.recranetConfig = {
         organization: '<?php echo $options['organization']; ?>',
@@ -29,4 +27,6 @@ $locale = substr($locale, 0, 2);
         currency: 'EUR'
     };
 </script>
-<script type="text/javascript" src="//static.recranet.com/elements/sdk-<?php echo $locale; ?>/sdk.js?<?php echo mt_rand(); ?>"></script>
+<script type="text/javascript" src="//static.recranet.com/elements/sdk-<?php echo $locale; ?>/sdk.js?<?php echo mt_rand(); ?>" async></script>
+
+<recranet-accommodations class="recranet-element"></recranet-accommodations>
