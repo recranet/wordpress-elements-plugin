@@ -15,7 +15,8 @@
 $options = array(
     'organization' => get_option( 'recranet_organization', 1000 ),
     'accommodation_category' => get_option( 'recranet_accommodation_category', null ),
-    'locality_category' => get_option( 'recranet_locality_category', null )
+    'locality_category' => get_option( 'recranet_locality_category', null ),
+    'google_api_key' => get_option( 'recranet_google_api_key', null )
 );
 
 $locale = get_locale();
@@ -27,6 +28,7 @@ $locale = substr($locale, 0, 2);
         organization: '<?php echo $options['organization']; ?>',
         locale: '<?php echo $locale; ?>',
         currency: 'EUR',
+        googleApiKey: <?php echo (isset($options['google_api_key']) && !empty($options['google_api_key']) ? '\''.$options['google_api_key'].'\'' : 'null'); ?>,
         accommodationParams: {
             accommodationCategory: <?php echo (isset($options['accommodation_category']) && $options['accommodation_category'] > 0 ? $options['accommodation_category'] : 'null'); ?>,
             localityCategory: <?php echo (isset($options['locality_category']) && $options['locality_category'] > 0 ? $options['locality_category'] : 'null'); ?>

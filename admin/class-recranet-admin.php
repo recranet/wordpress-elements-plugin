@@ -78,7 +78,7 @@ class Recranet_Admin {
       */
     public function add_action_links( $links ) {
        /*
-        *  Documentation : https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
+        *  Documentation : https://codex.wordpress.org/Plugin_API/Filter_google_api_key/plugin_action_links_(plugin_file_name)
         */
        $settings_link = array(
            '<a href="' . admin_url( 'options-general.php?page=' . $this->plugin_name ) . '">' . __('Settings', $this->plugin_name) . '</a>',
@@ -132,6 +132,15 @@ class Recranet_Admin {
 	    echo '<input type="text" name="' . $this->plugin_name . '_locality_category" id="' . $this->plugin_name . '_locality_category" value="' . get_option( $this->plugin_name . '_locality_category' ) . '">';
 	}
 	
+	/**
+	 * Render the google api key input for this plugin
+	 *
+	 * @since  1.2.0
+	 */
+	public function recranet_google_api_key_cb() {
+		echo '<input type="text" name="' . $this->plugin_name . '_google_api_key" id="' . $this->plugin_name . '_google_api_key" value="' . get_option( $this->plugin_name . '_google_api_key' ) . '">';
+	}
+	
     /**
      * Register settings
      *
@@ -141,6 +150,7 @@ class Recranet_Admin {
 		register_setting( $this->plugin_name, $this->plugin_name . '_organization', 'intval' );
 		register_setting( $this->plugin_name, $this->plugin_name . '_accommodation_category', 'intval' );
 		register_setting( $this->plugin_name, $this->plugin_name . '_locality_category', 'intval' );
+		register_setting( $this->plugin_name, $this->plugin_name . '_google_api_key', 'string' );
 
         add_settings_section(
     		$this->plugin_name . '_general',
@@ -174,6 +184,15 @@ class Recranet_Admin {
             $this->plugin_name,
             $this->plugin_name . '_general',
             array( 'label_for' => $this->plugin_name . '_locality_category' )
+        );
+
+        add_settings_field(
+            $this->plugin_name . '_google_api_key',
+            'Google API key',
+            array( $this, $this->plugin_name . '_google_api_key_cb' ),
+            $this->plugin_name,
+            $this->plugin_name . '_general',
+            array( 'label_for' => $this->plugin_name . '_google_api_key' )
         );
     }
 }
