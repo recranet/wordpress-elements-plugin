@@ -40,6 +40,6 @@ if (isset($atts['action'])) {
         }
     };
 </script>
-<script type="text/javascript" src="//static.recranet.com/elements/sdk-<?php echo $locale; ?>/sdk.js?<?php echo mt_rand(); ?>" async></script>
+<script type="text/javascript" src="//static.recranet.com/elements/<?php echo $locale; ?>/sdk.js?<?php echo mt_rand(); ?>" async></script>
 
 <recranet-search-bar class="recranet-element" formAction="<?php echo $action; ?>"></recranet-search-bar>

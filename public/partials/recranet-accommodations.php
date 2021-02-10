@@ -35,6 +35,6 @@ $locale = substr($locale, 0, 2);
         }
     };
 </script>
-<script type="text/javascript" src="//static.recranet.com/elements/sdk-<?php echo $locale; ?>/sdk.js?<?php echo mt_rand(); ?>" async></script>
+<script type="text/javascript" src="//static.recranet.com/elements/<?php echo $locale; ?>/sdk.js?<?php echo mt_rand(); ?>" async></script>
 
 <recranet-accommodations class="recranet-element"></recranet-accommodations>
