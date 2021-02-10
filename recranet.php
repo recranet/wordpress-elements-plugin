@@ -16,7 +16,7 @@
  * Plugin Name:       Recranet
  * Plugin URI:        https://docs.recranet.com/
  * Description:       Recranet Booking Elements
- * Version:           1.2.0
+ * Version:           1.2.1
  * Author:            Recranet
  * Author URI:        https://recranet.com/
  * Text Domain:       recranet
