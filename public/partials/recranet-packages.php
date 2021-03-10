@@ -23,8 +23,8 @@ $locale = get_locale();
 $locale = substr($locale, 0, 2);
 
 $baseUrl = '/';
-if (isset($atts['baseUrl'])) {
-    $baseUrl = $atts['baseUrl'];
+if (isset($atts['baseurl'])) {
+    $baseUrl = $atts['baseurl'];
 }
 ?>
 
