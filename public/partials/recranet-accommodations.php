@@ -21,6 +21,12 @@ $options = array(
 
 $locale = get_locale();
 $locale = substr($locale, 0, 2);
+
+$layoutType = '/';
+if (isset($atts['layouttype'])) {
+    $layoutType = $atts['layouttype'];
+}
+
 ?>
 
 <script type="text/javascript">
@@ -37,4 +43,4 @@ $locale = substr($locale, 0, 2);
 </script>
 <script type="text/javascript" src="//static.recranet.com/elements/<?php echo $locale; ?>/sdk.js?<?php echo mt_rand(); ?>" async></script>
 
-<recranet-accommodations class="recranet-element"></recranet-accommodations>
+<recranet-accommodations layoutType="<?php echo $layoutType; ?>" class="recranet-element"></recranet-accommodations>
