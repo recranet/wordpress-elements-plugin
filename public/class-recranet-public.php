@@ -63,6 +63,9 @@ class Recranet_Public {
         add_shortcode( 'recranet_accommodations', array($this, 'recranet_accommodations') );
         add_shortcode( 'recranet_packages', array($this, 'recranet_packages') );
         add_shortcode( 'recranet_search_bar', array($this, 'recranet_search_bar') );
+		add_shortcode( 'recranet_featured_accommodations', array($this, 'recranet_featured_accommodations') );
+		add_shortcode( 'recranet_featured_reviews_summary', array($this, 'recranet_featured_reviews_summary') );
+		add_shortcode( 'recranet_featured_reviews', array($this, 'recranet_featured_reviews') );
     }
 
     /**
@@ -100,7 +103,7 @@ class Recranet_Public {
 	    include_once( 'partials/recranet-packages.php' );
         return ob_get_clean();
     }
-	
+
     /**
      * Recranet search form
      *
@@ -111,4 +114,37 @@ class Recranet_Public {
 	    include_once( 'partials/recranet-search-bar.php' );
         return ob_get_clean();
     }
+
+	/**
+	 * Recranet featured accommodations
+	 *
+	 * @since    1.3.0
+	 */
+	function recranet_featured_accommodations( $atts ) {
+		ob_start();
+		include_once( 'partials/recranet-featured-accommodations.php' );
+		return ob_get_clean();
+	}
+
+	/**
+	 * Recranet reviews summary
+	 *
+	 * @since    1.3.0
+	 */
+	function recranet_featured_reviews_summary( $atts ) {
+		ob_start();
+		include_once( 'partials/recranet-featured-reviews-summary.php' );
+		return ob_get_clean();
+	}
+
+	/**
+	 * Recranet reviews
+	 *
+	 * @since    1.3.0
+	 */
+	function recranet_featured_reviews( $atts ) {
+		ob_start();
+		include_once( 'partials/recranet-featured-reviews.php' );
+		return ob_get_clean();
+	}
 }
