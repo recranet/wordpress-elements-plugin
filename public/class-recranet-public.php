@@ -66,6 +66,7 @@ class Recranet_Public {
 		add_shortcode( 'recranet_featured_accommodations', array($this, 'recranet_featured_accommodations') );
 		add_shortcode( 'recranet_featured_reviews_summary', array($this, 'recranet_featured_reviews_summary') );
 		add_shortcode( 'recranet_featured_reviews', array($this, 'recranet_featured_reviews') );
+		add_shortcode( 'recranet_featured_maps', array($this, 'recranet_featured_maps') );
     }
 
     /**
@@ -145,6 +146,17 @@ class Recranet_Public {
 	function recranet_featured_reviews( $atts ) {
 		ob_start();
 		include_once( 'partials/recranet-featured-reviews.php' );
+		return ob_get_clean();
+	}
+
+	/**
+	 * Recranet reviews
+	 *
+	 * @since    1.4.0
+	 */
+	function recranet_featured_maps( $atts ) {
+		ob_start();
+		include_once( 'partials/recranet-featured-maps.php' );
 		return ob_get_clean();
 	}
 }
