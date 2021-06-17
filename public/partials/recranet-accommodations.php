@@ -22,13 +22,18 @@ $options = array(
 $locale = get_locale();
 $locale = substr($locale, 0, 2);
 
-$layoutType = '/';
+$layoutType = '';
 if (isset($atts['layouttype'])) {
     $layoutType = $atts['layouttype'];
 }
 
+$accommodationCategory = '';
+if (isset($atts['accommodationcategory'])) {
+    $accommodationCategory = $atts['accommodationcategory'];
+}
 ?>
 
+<?php if (!empty($accommodationCategory)) : ?>
 <script type="text/javascript">
     window.recranetConfig = {
         organization: '<?php echo $options['organization']; ?>',
@@ -36,11 +41,25 @@ if (isset($atts['layouttype'])) {
         currency: 'EUR',
         googleApiKey: <?php echo (isset($options['google_api_key']) && !empty($options['google_api_key']) ? '\''.$options['google_api_key'].'\'' : 'null'); ?>,
         accommodationParams: {
-            accommodationCategory: <?php echo (isset($options['accommodation_category']) && $options['accommodation_category'] > 0 ? $options['accommodation_category'] : 'null'); ?>,
+            accommodationCategory: <?php echo $accommodationCategory; ?>,
             localityCategory: <?php echo (isset($options['locality_category']) && $options['locality_category'] > 0 ? $options['locality_category'] : 'null'); ?>
         }
     };
 </script>
+<?php else : ?>
+    <script type="text/javascript">
+        window.recranetConfig = {
+            organization: '<?php echo $options['organization']; ?>',
+            locale: '<?php echo $locale; ?>',
+            currency: 'EUR',
+            googleApiKey: <?php echo (isset($options['google_api_key']) && !empty($options['google_api_key']) ? '\''.$options['google_api_key'].'\'' : 'null'); ?>,
+            accommodationParams: {
+                accommodationCategory: <?php echo (isset($options['accommodation_category']) && $options['accommodation_category'] > 0 ? $options['accommodation_category'] : 'null'); ?>,
+                localityCategory: <?php echo (isset($options['locality_category']) && $options['locality_category'] > 0 ? $options['locality_category'] : 'null'); ?>
+            }
+        };
+    </script>
+<?php endif; ?>
 <script type="text/javascript" src="//static.recranet.com/elements/<?php echo $locale; ?>/sdk.js?<?php echo mt_rand(); ?>" async></script>
 
-<recranet-accommodations layoutType="<?php echo $layoutType; ?>" class="recranet-element"></recranet-accommodations>
+<recranet-accommodations accommodationCategory="<?php echo $accommodationCategory; ?>" layoutType="<?php echo $layoutType; ?>" class="recranet-element"></recranet-accommodations>
